@@ -12,6 +12,12 @@
 	height: $height;
 }
 
+//variables
+
+$color1:  #eee;
+$color2: rgb(79, 131, 243);
+$text-color: #222;
+
 /*Common styles*/
 * {
 	margin: 0;
@@ -26,6 +32,8 @@ html{
 	scroll-behavior: smooth;
 }
 body {
+	display: flex;
+	flex-direction: column;
 	overflow-x: hidden;
 	position:relative;
 }
@@ -39,12 +47,12 @@ body {
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
-	background-color: #001149;
+	background-color: $color2;
 }
 
 .animation_background {
 	@include size(150%, 150vw);
-	background-color: rgba(1, 10, 133, 0.8);
+	background-color: rgb(1, 43, 133);
 	position: absolute;
 	top: 50vh;
 	left: calc(50% - 75vw);
@@ -55,37 +63,47 @@ body {
 .animation_background:before {
 	content: "";
 	@include size(100%, 100%);
-	background-color: rgba(1, 10, 133, 0.6);
+	background-color: rgb(1, 43, 133);
 	position: absolute;
 	top: 0;
 	left: 0;
 	border-radius: 40%;
-	animation: rotate 30s infinite;
+	animation: rotate 40s infinite;
 }
 
 @keyframes rotate {
 	0% {
 		transform: rotate(0);
 	}
+
+25% {
+	transform: rotate(100deg)
+}
+ 50%{
+	 transform: rotate(50deg);
+ }
+ 75%{
+	 transform: rotate (-160deg);
+ }
 	100% {
-		transform: rotate(360deg);
+		transform: rotate(0deg);
 	}
 }
 
 /*navbar*/
 
 .navbar {
-	position: relative;
-	top: 7rem;
+	position: fixed;
+	@include size(100%, 70px);
+	z-index: 30;
+	background-color: $text-color;
 	display: flex;
+	align-items: center;
 	justify-content: space-evenly;
 	.navbar_link {
-		font-size: 1.2rem;
-		letter-spacing: 0.2rem;
+		font-size: 1rem;
 		color: #ffff;
 		margin-bottom: 5px;
-		z-index: 20;
-		transition: all 0.5s;
 		&:hover {
 			text-decoration: underline;
 		}
@@ -98,7 +116,7 @@ body {
 	font-family: "Righteous", cursive;
 	font-weight: 80;
 	position: absolute;
-	top: 50%;
+	top: 30%;
 	left: 50%;
 	transform: translateX(-50%);
 	color: #ffff;
@@ -110,34 +128,37 @@ body {
 /*Customer Section*/
 .section_heading {
 	position: absolute;
-	top: 60vh;
-	left: calc(50% - 15vw);
+	top: 300px;
+	left: 50%;
+	transform: translateX(-50%);
 	font-weight: 75;
-	font-size: 5vw;
-	color: #4e4e4e;
-	opacity: 0.3;
+	font-size: 7vw;
+	color: $color2;
 }
 
 .customers_section {
-	@include size(100%, 100vh);
+	@include size(100%, 500px);
+	border-bottom-left-radius: 20%;
+	border-bottom-right-radius: 20%;
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
+	background-color: $color1;
 	.logo {
 		position: absolute;
-		top: 5rem;
-		left: calc(50% - 10vw);
+		top: 2rem;
+		left: calc(50% - 5vw);
 		img {
-			@include size(20vw, 20vw);
+			@include size(10vw, 10vw);
 			max-width: 100%;
 			max-height: 100%;
 		}
 	}
 
 	.customer_wrapper {
-    	@include size(100%, 70vh);
-		top: 80vh;
+    	@include size(100%, 900px);
+		top: 500px;
 		position: relative;
 		display: flex;
 		justify-content: space-evenly;
@@ -150,8 +171,9 @@ body {
 	.customer2,
 	.customer3 {
 		@include size(20rem, 30rem);
+		margin: 10px;
 		display: flex;
-		background-color: #eeeeee;
+		background-color: $color2;
 		border-radius: 5%;
 		flex-direction: column;
 		align-items: center;
@@ -183,6 +205,7 @@ body {
 }
 
 .customer_text {
+	color: $color1;
 	text-align: left;
 	font-size: 0.8rem;
 	margin: 1rem 1rem;
@@ -200,15 +223,17 @@ body {
 .customer_name {
 	font-size: 1rem;
 	margin-top: 1rem;
+	color: $color1;
 }
 //end of customer section
 
 /*team section*/
 
 .team_section {
-	@include size(100%, 100vh);
+	@include size(100%, 300px);
 	position: relative;
-  top: 70vh;
+	background-color: $color1;
+  	top: 700px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -216,19 +241,19 @@ body {
 
 .team_heading{
   position: absolute;
-	top: 20vh;
+	top: 30%;
 	left:50%;
   transform:translateX(-50%);
 	font-weight: 75;
 	font-size: 5vw;
-	color: #121b96;
+	color:$color2;
 	opacity: 0.8;
 }
 
 .team_wrapper {
-  @include size(100%, 70vh);
-  top: 40vh;
-  position: relative;
+  @include size(100%, 800px);
+  top: 300px;
+  position: absolute;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -238,16 +263,17 @@ body {
 .team_member1, .team_member2, .team_member3 {
 	@include size(20rem, 30rem);
   		position: relative;
+		  margin: 10px;
 		display: flex;
-		background-color: #eeeeee;
+		background-color:$color2;
+		color: $color1;
 		border-radius: 5%;
 		flex-direction: column;
 		align-items: center;
 		padding: 2rem;
-		box-shadow: 1rem 1rem 2rem #ddd;
     	transition: box-shadow 0.3s;
     	&:hover {
-			box-shadow: 2rem 2rem 3rem rgba(73, 73, 97, 0.6);
+			box-shadow: 2rem 2rem 2rem rgba(73, 73, 97, 0.6);
 		}
     li{
       font-size: .8rem;
@@ -279,7 +305,7 @@ body {
 
 .projects_btn{
   background-color: #eeaa00;
-  color: #ffff;
+  color:#222;
   padding: .5rem;
   margin-top: .5rem;
   border-radius: 5rem;
@@ -304,7 +330,7 @@ body {
   cursor: pointer;
   .aboutme_btn-line{
     @include size(100%, .1rem);
-    background-color:#ffff;
+    background-color: $color1;
     }
 }
 
@@ -314,7 +340,8 @@ body {
 
 .aboutme_container{
   @include size(100%, 100%);
-  background-color:rgba(11, 8, 190, 0.8);
+  background-color:#222;
+  opacity: 0.8;
   color: #ffff;
   position: absolute;
   top: .3rem;
@@ -353,34 +380,36 @@ body {
 .contact_heading{
 	font-weight: 75;
 	font-size: 5vw;
-	color:rgba(180, 180, 180, 0.933);
+	color: $color1;
 	opacity: 0.8;
 }
+
 .contact_aside{
-	@include size(100%, 130vh);
-	position: absolute;
-	top:420vh;
+	@include size(100%, 100vh);
+	position: relative;
+	border-top-right-radius: 20%;
+	border-top-left-radius: 20%;
+	top: 1600px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items:center;
+	background-color: $color2;
 }
 
 .form_container{
 	@include size(80%, 40%);
-	background-color: #e5e9ff;
+	border-radius: 20px;
+	background-color: $color1;
 	display:flex;
 	align-items: center;
 	justify-content: space-evenly;
-	box-shadow: .3rem .3rem .4rem;
+	box-shadow: .3rem  .1rem  .6rem;
 }
 
 .form_img{
-	@include size(40rem, 30rem);
-	background-color: rgba(0, 45, 243, 0.8);
+	@include size(40rem, 40rem);
 	padding:2rem;
-	opacity: 0.8;
-	box-shadow: -3rem 3rem 4rem #aaa;
 	border-radius: 1rem;
 }
 
@@ -388,12 +417,11 @@ body {
 	@include size(40rem, 30rem);
 	padding-top: 2rem;
 	padding-left:5px;
-	background-color: #fff;
+	background-color: $color2;
 	display:flex;
 	flex-direction: column;
 	border-radius: .5rem;
-	box-shadow: 3rem 3rem 4rem  #aaa;
-	transform: skewX(-10deg);
+	transform: skewX(-13deg);
 	transition: all .3s;
 	&:hover{
 		transform: skewX(0);
@@ -408,7 +436,8 @@ body {
 
 .contact_form input,
 .contact_form textarea{
-	border: 1px solid #4e4e4e;
+	border: none;
+	background-color: $color1;
 	outline: none;
 	margin: 1rem;
 	padding: 1rem;
@@ -419,20 +448,23 @@ body {
 .submit_button{
 	@include size(10rem, 3rem);
 	margin-left: 1.5rem;
-	background-color: rgba(5, 36, 177, 0.867);
+	background-color:  #112ed3;
 	color: #ffff;
 	border-radius: 5rem;
 	outline: none;
 	font-size: 1rem;
 	border: none;
 	&:hover{
-		background-color: #112ed3;
+		background-color: $color2;
 	}
 }
 
 .copyright{
+	z-index: 10;
+	position: relative;
 	letter-spacing: .1rem;
 	font-size: .6rem;
+	color: $color1;
 }
 
 .up_button{
@@ -455,161 +487,65 @@ body {
 								
 							//RESPONSIVE
 
+@media (max-width: 1020px){
 
-@media (max-width: 1300px){
 	.customer_wrapper{
-		position: absolute;
-		flex-wrap: wrap;
-		top: -50vh;
-	}
-	.customers_section{
-		top: 0vh;
-		height:50vh;
-		.section_heading{
-			top: 47vh;
-		}
-	}
-	.customer1, .customer2, .customer3{
-		margin: 5rem 1rem;
+		margin-top: 600px;
 	}
 
+	.contact_aside{
+		margin-top: 200px ;
+	}
 
 	.team_section{
-		top:60vh;
+		margin-top: 300px;
 	}
-
-	.team_heading{
-		top: 35vh
-	}
-	.team_wrapper{
+	.customer_wrapper, .team_wrapper{
 		flex-wrap: wrap;
 	}
-	.team_member1, .team_member2, .team_member3{
-		margin: 5rem 1rem,
-	}
 
-	
-	.contact_aside{
-		top: 340vh;
-	}
-	.form_container{
-		height:50%;
-	}
-	.contact_form{
-		width: 60vw;
-	}
+		.up_button{
+			margin-right: 30px;
+		}
 
 	.form_img{
 		display: none;
 	}
 
+	.form_container{
+		width: 100%;
+	}
 }
-///////////////////
 
-@media (max-width: 1060px) {
-	.animation_background {
-		top: 70vh;
-	}
-	.main_title {
-		font-size: 3rem;
-	}
-
-	.team_section{
-		top: 110vh;
-	}
-
-	.contact_aside{
-		top: 430vh;
-	}
-
-}
-/////////////////////////
-
-
-@media (max-width: 710px) {
-
-	.main_title{
-		font-size: 2rem;
-	}
-	.animation_background {
-		top: 80vh;
-	}
-	.navbar {
-		z-index: 20;
-		display: block;
-		
-	}
-	.navbar_link {
-		margin-left: 1rem;
-		font-size: .3rem;
+@media (max-width: 680px){
+	.up_button{
+		display: none;
 	}
 
 	.contact_form{
-		height:  20rem;
+		transform: skewX(0);
+		}
+
+	.section_heading{
+		top: 200px;
 	}
 
-	.submit_button{
-		font-size: .8rem;
-		@include size(5rem, 2rem);
-	}
-
-	.contact_form input,textarea::placeholder{
-		font-size: .6rem;
-		
-	}
-	.contact_form  textarea{
-		font-size: 10px;
-	}
-
-	.team_section{
-		top: 220vh;
+	.customers_section{
+		height: 300px;
 	}
 
 	.contact_aside{
-		top: 650vh;
-	}
-}
-
-@media (max-width: 380px){
-	.contact_form  textarea{
-		height: 1rem;
-		font-size: 10px;
-	}
-	.contact_form input,textarea::placeholder{
-		font-size: .3rem;
+		top: 2900px;
+		margin: 0;
 	}
 
-	.contact_form input{
-		height: 2rem;
+	.logo img{
+		top:150px;
 	}
-	.submit_button{
-		width: 3rem;
-	}
-}
 
-@media ( max-height: 800px){
 	.team_section{
-		top:260vh;
-	}
-	.contact_aside{
-		top: 740vh;
+		top: 1400px;
+		margin: 100;
 	}
 }
-
-@media ( max-height: 680px){
-	.team_section{
-		top:300vh;
-	}
-	.contact_aside{
-		top: 800vh;
-	}
-}
-
-@media ( max-height: 610px){
-	.team_section{
-		top:320vh;
-	}
-	.contact_aside{
-		top: 850vh;
-	}
-}
+	
