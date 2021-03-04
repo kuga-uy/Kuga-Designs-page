@@ -445,6 +445,10 @@ body {
   cursor: pointer;
 }
 
+.aboutme_btn:hover {
+  background-color: #000;
+}
+
 .aboutme_btn .aboutme_btn-line {
   width: 100%;
   height: 0.1rem;

@@ -328,6 +328,9 @@ body {
   z-index: 20;
   transition: transform  .5s;
   cursor: pointer;
+  &:hover{
+	  background-color: #000;
+  }
   .aboutme_btn-line{
     @include size(100%, .1rem);
     background-color: $color1;
